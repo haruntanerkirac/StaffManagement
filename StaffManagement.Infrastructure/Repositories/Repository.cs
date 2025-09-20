@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StaffManagement.Application.Interfaces;
+using StaffManagement.Domain.Interfaces;
 using System.Linq.Expressions;
 
 namespace StaffManagement.Infrastructure.Repositories
@@ -212,5 +212,8 @@ namespace StaffManagement.Infrastructure.Repositories
         {
             return await Entity.ExecuteDeleteAsync(cancellationToken);
         }
+
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) =>
+        await _context.SaveChangesAsync(cancellationToken);
     }
 }

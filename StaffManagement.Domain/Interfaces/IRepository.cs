@@ -75,4 +75,6 @@ public interface IRepository<TEntity> where TEntity : class
     int ExecuteDelete();
 
     Task<int> ExecuteDeleteAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
