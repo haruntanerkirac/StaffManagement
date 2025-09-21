@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StaffManagement.Domain.Employees;
 using StaffManagement.Infrastructure.Context;
@@ -13,10 +14,12 @@ namespace StaffManagement.Infrastructure
             services.AddDbContext<ApplicationDbContext>(opt =>
             {
                 string connectionString = configuration.GetConnectionString("SqlServer")!;
+                opt.UseSqlServer(connectionString);
             });
 
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             //Scruter kullanılabilir
+
             return services;
         }
     }
