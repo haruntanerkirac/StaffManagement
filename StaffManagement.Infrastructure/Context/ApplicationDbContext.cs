@@ -1,6 +1,14 @@
-﻿namespace StaffManagement.Infrastructure.Context
+﻿using Microsoft.EntityFrameworkCore;
+using StaffManagement.Domain.Employees;
+
+namespace StaffManagement.Infrastructure.Context
 {
-    public class ApplicationDbContext
+    internal sealed class ApplicationDbContext : DbContext
     {
+        public ApplicationDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
+        public DbSet<Employee> Employees { get; set; }
     }
 }
